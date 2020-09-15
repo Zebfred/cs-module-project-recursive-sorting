@@ -21,9 +21,24 @@ def binary_search(arr, target, start, end):
 # sorted in ascending order or in descending order
 # You can implement this function either recursively 
 # or iteratively
+
+def bsearch_helper(arr, target, low, high):
+    if low > high:
+        return False
+    mid = (low + high)//2
+    if arr[mid] == target:
+        return True
+    elif arr[mid] < target:
+        return bsearch_helper(arr, target, mid + 1, high)
+    else:
+        return bsearch_helper(arr, target, low, mid - 1)
+    return False
 def agnostic_binary_search(arr, target):
-    # Your code here
-    pass
+    if bsearch_helper(sorted(arr), target, key, 0, len(arr) - 1) == True:
+        return target
+
+#def bsearch(arr, key):
+#    return bsearch_helper(sorted(arr), key, 0, len(arr) - 1)
 
 def ago_bi_search(arr, l, h, key):
     
